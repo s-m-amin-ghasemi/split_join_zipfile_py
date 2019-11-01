@@ -3,11 +3,11 @@ split and join larg zip file together
 change archive_name to your filename with its extention name. ( "archive_file.zip")
 
 every chunk size :
-packet_size = int(1024*1024*100)   # bytes
+<<packet_size =----------   # bytes>>
 
 
  number of files that you get from spliter
-filenumbers=9   #number of files you want to join
+<<filenumbers=-------------   #number of files you want to join>>
 
 
 
