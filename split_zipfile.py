@@ -1,4 +1,4 @@
-outfile = archive_name
+outfile = archive_name   #your zip file name  "--------.zip"
 packet_size = int(1.5 * 1024**3)   # bytes
 
 with open(outfile, "rb") as output:
