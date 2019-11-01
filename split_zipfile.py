@@ -1,13 +1,13 @@
-outfile = archive_name   #your zip file name  "--------.zip"
-packet_size = int(1.5 * 1024**3)   # bytes
+def split_zipfile(fn="archive_name.zip",package_size_megabyte=100,path=./)
+    inputfile = filename   #your zip file name  "--------.zip"
+    packet_size = int(1024*1024*package_size_megabyte)   # bytes
 
-with open(outfile, "rb") as output:
-    filecount = 0
-    while True:
-        data = output.read(packet_size)
-        print(len(data))
-        if not data:
-            break   # we're done
-        with open("{}{:03}".format(outfile, filecount), "wb") as packet:
-            packet.write(data)
-        filecount += 1
+    with open(path+inputfile, "rb") as output:
+        filecount = 0
+        while True:
+            data = output.read(packet_size)
+            if not data:
+                break   # we're done
+            with open("{}{}{:03}".format(path,inputfile, filecount), "wb") as packet:
+                packet.write(data)
+            filecount += 1
