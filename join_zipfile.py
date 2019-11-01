@@ -1,4 +1,4 @@
-outfile = "archive_name"
+outfile = archive_name   #your zip file name  "--------.zip"
 packet_size = int(1024*1024*100)   # bytes
 filenumbers=9   #number of files you want to join
 for i in range(filenumbers):
