@@ -1,6 +1,6 @@
-def join_zipfile(path=./,fn=archive_name.zip,package_size_megabyte=100,filenumbers)
+def join_zipfile(fn=archive_name.zip,package_size_megabyte=100,filenumbers,path=./)
     outfile = filename   #your zip file name  "--------.zip"
-        packet_size = int(1024*1024*package_size_megabyte)   # bytes
+    packet_size = int(1024*1024*package_size_megabyte)   # bytes
     filenumbers=fn   #number of files you want to join
     for i in range(filenumbers+1):
         with open("{}{}.zip{:03}".format(path,outfile, i), "rb") as packet:
