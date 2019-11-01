@@ -1,19 +1,18 @@
-def split_zipfile(fn="archive_name",package_size_megabyte=100,path="./"):
-    inputfile = fn   #your zip file name  "--------.zip"
-    packet_size = int(1024*1024*package_size_megabyte)   # bytes
+import os
+from math import ceil
 
-    with open(path+inputfile+'.zip', "rb") as output:
-        filecount = 0
-        while True:
-            data = output.read(packet_size)
-            if not data:
-                print("FINISHED")
-                break   # we're done
-            print("{}{}.zip{:03}".format(path,inputfile, filecount))
-            with open("{}{}.zip{:03}".format(path,inputfile, filecount), "wb") as packet:
-                packet.write(data)
-            filecount += 1
+def join_zipfile(fn="archive_name",package_size_megabyte=100,filenumbers=2,path="./"):
+    outfile = fn   #your zip file name  "--------.zip"
+    packet_size = ceil(1024*1024*package_size_megabyte)   # bytes
+    filenumbers=int(os.path.getsize(path+outfile+'.zip')/packet_size)   #number of files you want to join
+    for i in range(filenumbers+1):
+        with open("{}{}.zip{:03}".format(path,outfile, i), "rb") as packet:
+            col=packet.read(packet_size)
+
+            with open("{}{}02.zip".format(path,outfile), "ab+") as mainpackage:
+                mainpackage.write(col)
+    print("FINISHED")
 
 
 if __name__ == "__main__":
-    split_zipfile()
+    join_zipfile()
